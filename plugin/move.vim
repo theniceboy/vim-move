@@ -40,7 +40,7 @@ function s:MoveVertically(first, last, distance)
     let l:last  = line(a:last)
 
     " Compute the destination line. Instead of simply incrementing the line
-    " number, we move the cursor with `j` and `k`. This ensures that the
+    " number, we move the cursor with `e` and `u`. This ensures that the
     " destination line is in bounds and it also goes past closed folds.
     let l:old_pos = getcurpos()
     if a:distance < 0
@@ -224,13 +224,13 @@ nnoremap <silent> <Plug>MoveCharLeft            :<C-u> silent call <SID>MoveChar
 
 
 if g:move_map_keys
-    execute 'vmap' s:MoveKey('j') '<Plug>MoveBlockDown'
-    execute 'vmap' s:MoveKey('k') '<Plug>MoveBlockUp'
-    execute 'vmap' s:MoveKey('h') '<Plug>MoveBlockLeft'
-    execute 'vmap' s:MoveKey('l') '<Plug>MoveBlockRight'
+    execute 'vmap' s:MoveKey('e') '<Plug>MoveBlockDown'
+    execute 'vmap' s:MoveKey('u') '<Plug>MoveBlockUp'
+    " execute 'vmap' s:MoveKey('h') '<Plug>MoveBlockLeft'
+    " execute 'vmap' s:MoveKey('l') '<Plug>MoveBlockRight'
 
-    execute 'nmap' s:MoveKey('j') '<Plug>MoveLineDown'
-    execute 'nmap' s:MoveKey('k') '<Plug>MoveLineUp'
-    execute 'nmap' s:MoveKey('h') '<Plug>MoveCharLeft'
-    execute 'nmap' s:MoveKey('l') '<Plug>MoveCharRight'
+    execute 'nmap' s:MoveKey('y') '<Plug>MoveLineDown'
+    execute 'nmap' s:MoveKey('l') '<Plug>MoveLineUp'
+    " execute 'nmap' s:MoveKey('h') '<Plug>MoveCharLeft'
+    " execute 'nmap' s:MoveKey('l') '<Plug>MoveCharRight'
 endif
